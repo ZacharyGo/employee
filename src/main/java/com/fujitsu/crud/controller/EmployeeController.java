@@ -14,13 +14,14 @@ import com.fujitsu.crud.service.EmployeeService;
 public class EmployeeController {
 
 	@Autowired
+	//private EmployeeService employeeService;
 	private EmployeeService employeeService;
 	
 	// display list of employees
 	@GetMapping("/")
 	public String viewHomePage(Model model) {
 		model.addAttribute("listEmployees", employeeService.getAllEmployees());
-        return "index";
+        return "main";
 	}
 	
 	@GetMapping("/showNewEmployeeForm")
@@ -35,7 +36,8 @@ public class EmployeeController {
 	public String saveEmployee(@ModelAttribute("employee") Employee employee) {
 		// save employee to database
 		employeeService.saveEmployee(employee);
-		return "redirect:/";
+		//return "redirect:/";
+		 return "index";
 	}
 	
 }
